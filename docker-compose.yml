@@ -1,0 +1,48 @@
+version: "3.5"
+services:
+
+    # nginx web server
+    # ------------------------------------------------------------------------------------------------------------------
+    webserver:
+        build: docker/nginx
+        container_name: "${PROJECT_NAME}-webserver"
+        working_dir: /app
+        volumes:
+            - .:/app
+            - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+        depends_on:
+            - "php"
+        environment:
+            TZ: 'Europe/Prague'
+            HOSTNAME: "${PROJECT_NAME}.local"
+
+    # PHP
+    # ------------------------------------------------------------------------------------------------------------------
+    php:
+        build: docker/php
+        container_name: "${PROJECT_NAME}-php"
+        working_dir: /app
+        links:
+            - redis
+        volumes:
+            - .:/app
+        environment:
+            TZ: 'Europe/Prague'
+
+    # PostgreSQL
+    # ------------------------------------------------------------------------------------------------------------------
+    database:
+        image: "postgres:alpine"
+        container_name: "${PROJECT_NAME}-db"
+        restart: always
+        environment:
+            POSTGRES_USER: root
+            POSTGRES_PASSWORD: root
+
+    # Redis
+    # ------------------------------------------------------------------------------------------------------------------
+    redis:
+        image: "redis:alpine"
+        container_name: "${PROJECT_NAME}-redis"
+        environment:
+            TZ: 'Europe/Prague'

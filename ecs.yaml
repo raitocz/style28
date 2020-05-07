@@ -1,0 +1,19 @@
+parameters:
+    sets:
+        - 'clean-code'
+        - 'psr12'
+        - 'php71'
+        - 'symfony'
+        - 'symplify'
+        - 'types'
+        - 'common'
+    skip:
+        SlevomatCodingStandard\Sniffs\Commenting\EmptyCommentSniff.EmptyComment: ~
+        SlevomatCodingStandard\Sniffs\TypeHints\ReturnTypeHintSniff.UselessAnnotation: ~
+        PhpCsFixer\Fixer\Phpdoc\NoEmptyPhpdocFixer: ~
+        PhpCsFixer\Fixer\Phpdoc\NoSuperfluousPhpdocTagsFixer: ~
+        SlevomatCodingStandard\Sniffs\TypeHints\PropertyTypeHintSniff.UselessAnnotation: ~
+        Symplify\CodingStandard\Sniffs\Debug\CommentedOutCodeSniff.Found: ~
+        PhpCsFixer\Fixer\PhpTag\BlankLineAfterOpeningTagFixer: ~
+        SlevomatCodingStandard\Sniffs\TypeHints\ParameterTypeHintSniff.UselessAnnotation: ~
+

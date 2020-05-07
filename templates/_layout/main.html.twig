@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="cs-CZ" class="text-light bg-dark">
+<head>
+    <title>{% block title %}Home{% endblock %} - Style28</title>
+
+    {# META Tags #}
+    {# -------------------------------------------------------------------------------------------------------------- #}
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content=""/>
+
+    {# Links #}
+    {# -------------------------------------------------------------------------------------------------------------- #}
+    <link rel="canonical"
+          href="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}"/>
+    <link rel="icon" type="image/x-icon" href="{#{{ asset('favicon.ico') }}#}"/>
+    <link rel="icon" sizes="192x192" href="{#{{ asset('bigicon.png') }}#}"/>
+    <link rel="manifest" href="{#{{ asset('manifest.json') }}#}"/>
+
+    {# CSS Loading #}
+    {# -------------------------------------------------------------------------------------------------------------- #}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('libraries/@fortawesome/fontawesome-free/css/all.css') }}">
+        <link rel="stylesheet" href="{{ asset('libraries/simplemde/dist/simplemde.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    {% endblock %}
+</head>
+
+<body>
+
+<div class="d-flex flex-column sticky-footer-wrapper">
+{# Flash messages #}
+{# -------------------------------------------------------------------------------------------------------------- #}
+
+{% if app.request.hasPreviousSession %}
+    {% for label, messages in app.flashes %}
+        <div class="container" id="flash-messages">
+            {% for message in messages %}
+                <div class="alert alert-{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+{% endif %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+    <div class="container">
+        <a class="navbar-brand" href="{{ url('frontend_article_list') }}">STYL<strong>E28</strong></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        about
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url('frontend_article_list') }}">
+                        blog <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        gallery
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+{# Body #}
+{# -------------------------------------------------------------------------------------------------------------- #}
+<main class="container flex-fill">
+    {% block body %}{% endblock %}
+</main>
+
+
+<footer class="text-light bg-dark p-5">
+    <div class="container text-center text-muted">
+        Created & maintained by <a href="mailto:raito.akehanareru@gmail.com" class="text-muted"><strong>raito</strong></a> @ 2020
+    </div>
+</footer>
+
+</div>
+{# JavaScript #}
+{# -------------------------------------------------------------------------------------------------------------- #}
+{% block javascripts %}
+    <script src="{{ asset('libraries/jquery/dist/jquery.slim.js') }}"></script>
+    <script src="{{ asset('libraries/popper.js/dist/umd/popper.min.js') }}"></script>
+    <script src="{{ asset('libraries/bootstrap/dist/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('libraries/simplemde/dist/simplemde.min.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+{% endblock %}
+</body>
+
+</html>

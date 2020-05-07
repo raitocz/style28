@@ -1,0 +1,30 @@
+html, body {
+	font-family: 'Roboto', sans-serif !important;
+}
+
+.container#flash-messages{
+	margin-top: 30px;
+}
+
+h2 {
+	font-size: 2.4rem;
+	margin-top: 30px;
+	color: $colorPrimary;
+	line-height: 2.8rem;
+
+	small {
+		line-height: 3rem;
+
+		&:after {
+			content: '\A';
+			white-space: pre;
+		}
+	}
+
+	text-transform: uppercase;
+	font-weight: 900;
+}
+
+body, .sticky-footer-wrapper {
+	min-height:100vh;
+}

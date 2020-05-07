@@ -1,0 +1,36 @@
+{% extends '_layout/main.html.twig' %}
+
+{% block title %}Article preview{% endblock %}
+
+{% block body %}
+    <a href="{{ path('admin_article_list') }}" class="btn btn-primary">
+        <i class="fa fa-fw fa-caret-left"></i>
+        Back to list
+    </a>
+
+    <a href="{{ path('admin_article_edit', {'id': article.id}) }}" class="btn btn-primary">
+        <i class="fa fa-fw fa-pencil"></i>
+        Edit
+    </a>
+
+    <div class="float-right">
+    {{ include('Admin/Article/_delete_form.html.twig') }}
+    </div>
+
+    <h1 class="mt-5">{{ article.title }} <small class="badge badge-light ">preview</small></h1>
+
+    <p>
+        Published on {{ article.datePublished|date('d. M Y') }}
+        {% if article.dateEdited is not null and article.datePublished is same as(article.dateEdited) %}
+        <i>(last edited on {{ article.dateEdited|date('d. M Y') }})</i>
+        {% endif %}
+        by <strong>{{ article.author }}</strong>
+    </p>
+    <hr class="mb-5">
+
+    {% apply markdown_to_html %}
+        {{ article.content }}
+    {% endapply %}
+
+
+{% endblock %}

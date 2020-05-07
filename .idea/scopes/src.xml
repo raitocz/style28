@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="src" pattern="file[style28]:src//*&amp;&amp;!file[style28]:src/Migrations//*&amp;&amp;!file:src/Kernel.php" />
+</component>
