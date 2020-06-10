@@ -2,7 +2,6 @@
 
 namespace EryseBlog\Repository\Article;
 
-use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Persistence\ManagerRegistry;
 use EryseBlog\Entity\Article\ArticleEntity;
@@ -29,20 +28,17 @@ class ArticleRepository extends AbstractRepository
     public function findAllVisible(): ArrayCollection
     {
         return new ArrayCollection(
-            $this->createQueryBuilder('article')
-                ->where('article.public = true')
-                ->andWhere('article.datePublished >= :currentDate')
-                ->orderBy('article.id', 'DESC')
-                ->setParameter('currentDate', date('Y-m-d'))
-                ->getQuery()
-                ->getResult()
+            $this->createQueryBuilder('article')->where('article.public = true')->andWhere(
+                    'article.datePublished <= :currentDate'
+                )->orderBy('article.id', 'DESC')->setParameter('currentDate', date('Y-m-d'))->getQuery()->getResult()
         );
     }
 
     /**
      * @return ArrayCollection
      */
-    public function findAllForAdmin(): ArrayCollection{
+    public function findAllForAdmin(): ArrayCollection
+    {
         return new ArrayCollection($this->findBy([], ['id' => 'DESC']));
     }
 }

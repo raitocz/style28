@@ -17,7 +17,7 @@
             <tr>
                 <td>#{{ article.id }}</td>
                 <td>
-                    <a href="{{ url('frontend_article_list') }}">{{ article.title }}</a>
+                    <a href="{{ url('frontend_article_view', {"datePublished": article.datePublished|date("Y-m-d"), "slug": article.slug}) }}">{{ article.title }}</a>
                 </td>
                 <td>
                     {{ article.datePublished|date('d. M Y') }}

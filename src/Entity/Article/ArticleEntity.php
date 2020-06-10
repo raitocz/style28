@@ -3,11 +3,14 @@
 namespace EryseBlog\Entity\Article;
 
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use EryseBlog\Entity\Identifier;
 
 /**
  * @ORM\Entity()
+ * @ORM\Table(name="article")
  */
 class ArticleEntity
 {
@@ -23,6 +26,12 @@ class ArticleEntity
      * @var string
      * @ORM\Column(type="string")
      */
+    private string $slug = '';
+
+    /**
+     * @var string
+     * @ORM\Column(type="string")
+     */
     private string $author = '';
 
     /**
@@ -33,33 +42,40 @@ class ArticleEntity
 
     /**
      * @var string
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="text")
      */
     private string $content = '';
 
     /**
      * @var DateTime
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     private ?DateTime $dateCreated = null;
 
     /**
      * @var DateTime
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     private ?DateTime $datePublished = null;
 
     /**
      * @var DateTime
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="date", nullable=true)
      */
     private ?DateTime $dateEdited = null;
+
+    /**
+     * @var Collection
+     * @ORM\OneToMany(targetEntity="EryseBlog\Entity\Photo\PhotoEntity", mappedBy="article")
+     */
+    private ?Collection $photos = null;
 
     /**
      * @return string
      */
     public function getTitle(): string
     {
+        $this->photos = new ArrayCollection();
         return $this->title;
     }
 
@@ -69,6 +85,22 @@ class ArticleEntity
     public function setTitle(string $title): void
     {
         $this->title = $title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug(): string
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     */
+    public function setSlug(string $slug): void
+    {
+        $this->slug = $slug;
     }
 
     /**
@@ -165,5 +197,21 @@ class ArticleEntity
     public function setDateEdited(DateTime $dateEdited): void
     {
         $this->dateEdited = $dateEdited;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getPhotos(): Collection
+    {
+        return $this->photos;
+    }
+
+    /**
+     * @param Collection $photos
+     */
+    public function setPhotos(Collection $photos): void
+    {
+        $this->photos = $photos;
     }
 }

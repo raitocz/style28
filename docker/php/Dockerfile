@@ -5,14 +5,18 @@ WORKDIR '/app'
 ARG DEBIAN_FRONTEND=noninteractive
 
 # Install selected extensions and other stuff
-RUN apt-get update
-RUN apt-get -y --no-install-recommends install \
+RUN apt update
+RUN apt install -y --no-install-recommends \
+    libicu-dev \
     libcurl4-openssl-dev \
     libzip-dev \
     libxml2-dev \
     libonig-dev \
-    libxslt-dev \
-    libpq-dev
+    libxslt1-dev \
+    libpq-dev \
+    libpng-dev \
+    libjpeg-dev \
+    libfreetype6-dev
 
 RUN docker-php-ext-install \
     zip \
@@ -20,7 +24,10 @@ RUN docker-php-ext-install \
     mbstring \
     pdo \
     pdo_mysql \
-    pdo_pgsql
+    pdo_pgsql \
+    gd
+
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 
 # Install other soft
 RUN apt-get -y install \

@@ -1,0 +1,29 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+    <div class="container">
+        <a class="navbar-brand" href="{{ url('frontend_home_about') }}">STYL<strong>E28</strong></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item {% if app.request.attributes.get('_route') == 'frontend_home_about' %}active{% endif %}">
+                    <a class="nav-link" href="{{ url('frontend_home_about') }}">
+                        about
+                    </a>
+                </li>
+                <li class="nav-item {% if app.request.attributes.get('_route') == 'frontend_article_list' or app.request.attributes.get('_route') == 'frontend_article_view' %}active{% endif %}">
+                    <a class="nav-link" href="{{ url('frontend_article_list') }}">
+                        blog <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        gallery
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

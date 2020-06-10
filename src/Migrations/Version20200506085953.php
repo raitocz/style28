@@ -26,7 +26,7 @@ final class Version20200506085953 extends AbstractMigration
         );
 
         $this->addSql(
-            'CREATE TABLE article_entity (id SERIAL NOT NULL, title VARCHAR(255) NOT NULL, author VARCHAR(255) NOT NULL, public BOOLEAN NOT NULL, content VARCHAR(255) NOT NULL, date_created TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, date_published TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, date_edited TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, PRIMARY KEY(id))'
+            'CREATE TABLE article (id SERIAL NOT NULL, title VARCHAR(255) NOT NULL, author VARCHAR(255) NOT NULL, public BOOLEAN NOT NULL, content VARCHAR(255) NOT NULL, date_created TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, date_published TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, date_edited TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, PRIMARY KEY(id))'
         );
     }
 
@@ -39,6 +39,6 @@ final class Version20200506085953 extends AbstractMigration
         );
 
         $this->addSql('CREATE SCHEMA public');
-        $this->addSql('DROP TABLE article_entity');
+        $this->addSql('DROP TABLE article');
     }
 }

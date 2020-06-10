@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="adminNavbar">
+    <div class="container">
+        <span><i class="fa fa-fw fa-cogs"></i>: </span>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#adminNavbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="adminNavbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('admin_dashboard') }}">
+                        dashboard
+                    </a>
+                </li>
+            </ul>
+
+            <a class="nav-link float-right ml-auto" href="{{ url('app_logout') }}" title="Sign out">
+                <i class="fa fa-fw fa-sign-out"></i>
+            </a>
+        </div>
+    </div>
+</nav>

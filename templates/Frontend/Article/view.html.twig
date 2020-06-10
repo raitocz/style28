@@ -1,0 +1,23 @@
+{% extends '_layout/main.html.twig' %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block body %}
+
+    <h1 class="mt-5">{{ article.title }}</h1>
+
+    <p>
+        Published on {{ article.datePublished|date('d. M Y') }}
+        {% if article.dateEdited is not null and article.datePublished is same as(article.dateEdited) %}
+            <i>(last edited on {{ article.dateEdited|date('d. M Y') }})</i>
+        {% endif %}
+        by <strong>{{ article.author }}</strong>
+    </p>
+    <hr class="mb-5">
+
+    {% apply markdown_to_html %}
+        {{ article.content }}
+    {% endapply %}
+
+
+{% endblock %}

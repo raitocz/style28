@@ -2,17 +2,37 @@
 
 {% block body %}
 
-    <div class="col-xs-12 col-md-3">
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Articles</h5>
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <a href="{{ url('admin_article_list') }}">List</a>
-                </li>
-            </ul>
+    <div class="row">
+
+        <div class="col-xs-12 col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Articles</h5>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <a href="{{ url('admin_article_list') }}">List</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-    </div>
+
+        <div class="col-xs-12 col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Gallery</h5>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <a href="{{ url('admin_gallery_upload_select') }}">Upload photo</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{{ url('admin_gallery_list_index') }}">View photos</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
     </div>
 {% endblock %}
 

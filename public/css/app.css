@@ -9842,6 +9842,14 @@ html, body {
   margin-top: 30px;
 }
 
+h1 {
+  font-size: 3.2rem;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link {
+  padding-left: 2rem;
+}
+
 h2 {
   font-size: 2.4rem;
   margin-top: 30px;
@@ -9860,6 +9868,10 @@ h2 small:after {
 
 body, .sticky-footer-wrapper {
   min-height: 100vh;
+}
+
+#adminNavbar {
+  padding: 0;
 }
 
 /*# sourceMappingURL=app.css.map */

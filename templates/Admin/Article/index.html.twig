@@ -42,6 +42,10 @@
                         <i class="fa fa-fw fa-search"></i>
                         Preview
                     </a>
+                    <a href="{{ path('frontend_article_view', {'datePublished': article.datePublished|date('Y-m-d'), 'slug': article.slug}) }}" class="btn btn-sm btn-primary">
+                        <i class="fa fa-fw fa-eye"></i>
+                        View live
+                    </a>
                     <a href="{{ path('admin_article_edit', {'id': article.id}) }}" class="btn btn-sm btn-info">
                         <i class="fa fa-fw fa-pencil"></i>
                         Edit

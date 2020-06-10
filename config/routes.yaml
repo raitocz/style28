@@ -1,3 +1,7 @@
 #index:
 #    path: /
 #    controller: EryseBlog\Controller\DefaultController::index
+
+phpinfo:
+    path: /phpinfo
+

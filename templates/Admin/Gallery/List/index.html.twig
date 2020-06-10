@@ -1,0 +1,29 @@
+{% extends '_layout/main.html.twig' %}
+
+{% block title %}List photos{% endblock %}
+
+{% block body %}
+    <h1>List photos</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Thumb</th>
+            <th>ID</th>
+            <th>Label</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {%  for photo in photos  %}
+            <tr>
+                <td><img src="{{ vich_uploader_asset(photo, 'imageFile') | imagine_filter('tiny_thumb') }}" alt="{{ photo.label }}" /></td>
+                <td>{{ photo.id }}</td>
+                <td>{{ photo.label }}</td>
+                <td></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -6,8 +6,10 @@ use DateTime;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use EryseBlog\Entity\Article\ArticleEntity;
+use EryseBlog\Exception\SlugException;
 use EryseBlog\Form\Article\ArticleEntityType;
 use EryseBlog\Repository\Article\ArticleRepository;
+use EryseBlog\Service\SlugService;
 use Exception;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,7 +18,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin/article/")
+ * @Route("/admin/article")
  * @IsGranted("ROLE_ADMIN")
  */
 class ArticleController extends AbstractController
@@ -53,18 +55,22 @@ class ArticleController extends AbstractController
      *
      * @param Request $request
      *
+     * @param SlugService $slugService
+     *
      * @return Response
      *
      * @throws ORMException
      * @throws OptimisticLockException
+     * @throws SlugException
      */
-    public function new(Request $request): Response
+    public function new(Request $request, SlugService $slugService): Response
     {
         $articleEntity = new ArticleEntity();
         $form = $this->createForm(ArticleEntityType::class, $articleEntity);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $articleEntity->setSlug($slugService->slugify($articleEntity->getTitle()));
             $this->articleRepository->save($articleEntity);
 
             return $this->redirectToRoute('admin_article_list');
