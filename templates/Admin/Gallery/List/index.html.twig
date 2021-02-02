@@ -21,7 +21,13 @@
                 <td><img src="{{ vich_uploader_asset(photo, 'imageFile') | imagine_filter('tiny_thumb') }}" alt="{{ photo.label }}" /></td>
                 <td>{{ photo.id }}</td>
                 <td>{{ photo.label }}</td>
-                <td></td>
+                <td>
+                    <a href="{{ url('admin_gallery_list_remove', {'photo': photo.id}) }}" class="btn btn-danger">
+                        <i class="fa fa-fw fa-times"></i>
+                        Delete
+                    </a>
+
+                </td>
             </tr>
         {% endfor %}
         </tbody>

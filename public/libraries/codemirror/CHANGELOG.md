@@ -1,3 +1,45 @@
+## 5.55.0 (2020-05-20)
+
+### Bug fixes
+
+The editor no longer overrides the rendering of zero-width joiners (allowing combined emoji to be shown).
+
+[vim bindings](https://codemirror.net/demo/vim.html): Fix an issue where the `vim-mode-change` event was fired twice.
+
+[javascript mode](https://codemirror.net/mode/javascript/): Only allow `-->`-style comments at the start of a line.
+
+[julia mode](https://codemirror.net/mode/julia/): Improve indentation.
+
+[pascal mode](https://codemirror.net/mode/pascal/index.html): Recognize curly bracket comments.
+
+[runmode addon](https://codemirror.net/doc/manual.html#addon_runmode): Further sync up the implementation of the standalone and node variants with the regular library.
+
+### New features
+
+[loadmode addon](https://codemirror.net/doc/manual.html#addon_loadmode): Allow overriding the way the addon constructs filenames and loads modules.
+
+## 5.54.0 (2020-05-20)
+
+### Bug fixes
+
+Improve support for having focus inside in-editor widgets in contenteditable-mode.
+
+Fix issue where the scroll position could jump when clicking on a selection in Chrome.
+
+[python mode](https://codemirror.net/mode/python/): Better format string support.
+
+[javascript mode](https://codemirror.net/mode/javascript/): Improve parsing of private properties and class fields.
+
+[matchbrackets addon](https://codemirror.net/doc/manual.html#addon_matchbrackets): Disable highlighting when the editor doesn't have focus.
+
+### New features
+
+[runmode addon](https://codemirror.net/doc/manual.html#addon_runmode): Properly support for cross-line lookahead.
+
+[vim bindings](https://codemirror.net/demo/vim.html): Allow Ex-Commands with non-word names.
+
+[gfm mode](https://codemirror.net/mode/gfm/): Add a `fencedCodeBlockDefaultMode` option.
+
 ## 5.53.2 (2020-04-21)
 
 ### Bug fixes

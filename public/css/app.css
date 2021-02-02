@@ -9874,4 +9874,19 @@ body, .sticky-footer-wrapper {
   padding: 0;
 }
 
+.CodeMirror {
+  min-height: 800px;
+}
+
+div#article-view p {
+  text-align: justify;
+}
+div#article-view .img-desc {
+  padding: 1rem;
+  background-color: #f2f2f2;
+  margin-bottom: 2rem;
+  font-style: italic;
+  text-align: center;
+}
+
 /*# sourceMappingURL=app.css.map */

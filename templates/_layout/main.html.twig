@@ -7,7 +7,7 @@
     {# -------------------------------------------------------------------------------------------------------------- #}
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content=""/>
 
     {# Links #}
@@ -22,7 +22,8 @@
     {# -------------------------------------------------------------------------------------------------------------- #}
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('libraries/@fortawesome/fontawesome-free/css/all.css') }}">
-        <link rel="stylesheet" href="{{ asset('libraries/simplemde/dist/simplemde.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('libraries/codemirror/lib/codemirror.css') }}">
+        <link rel="stylesheet" href="{{ asset('libraries/codemirror/theme/darcula.css') }}">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     {% endblock %}
 </head>
@@ -53,15 +54,15 @@
 
     {# Body #}
     {# -------------------------------------------------------------------------------------------------------------- #}
-    <main class="container flex-fill">
+    <main class="container flex-fill mb-5">
         {% block body %}{% endblock %}
     </main>
 
 
     <footer class="text-light bg-dark p-5">
         <div class="container text-center text-muted">
-            Created & maintained by <a href="mailto:raito.akehanareru@gmail.com"
-                                       class="text-muted"><strong>raito</strong></a> @ 2020
+            Created & maintained by
+            <a href="mailto:raito.akehanareru@gmail.com" class="text-muted"><strong>raito</strong></a> // 2020
         </div>
     </footer>
 
@@ -72,7 +73,8 @@
     <script src="{{ asset('libraries/jquery/dist/jquery.slim.js') }}"></script>
     <script src="{{ asset('libraries/popper.js/dist/umd/popper.min.js') }}"></script>
     <script src="{{ asset('libraries/bootstrap/dist/js/bootstrap.js') }}"></script>
-    <script src="{{ asset('libraries/simplemde/dist/simplemde.min.js') }}"></script>
+    <script src="{{ asset('libraries/codemirror/lib/codemirror.js') }}"></script>
+    <script src="{{ asset('libraries/codemirror/mode/xml/xml.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 {% endblock %}
 </body>

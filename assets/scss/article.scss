@@ -1,0 +1,13 @@
+div#article-view {
+  p{
+    text-align: justify;
+  }
+
+  .img-desc{
+    padding: 1rem;
+    background-color: darken($colorWhite, 5);
+    margin-bottom: 2rem;
+    font-style: italic;
+    text-align: center;
+  }
+}

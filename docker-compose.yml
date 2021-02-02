@@ -34,7 +34,6 @@ services:
     database:
         image: "postgres:alpine"
         container_name: "${PROJECT_NAME}-db"
-        restart: always
         environment:
             POSTGRES_USER: root
             POSTGRES_PASSWORD: root

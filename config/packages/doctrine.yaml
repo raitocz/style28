@@ -13,6 +13,6 @@ doctrine:
             EryseBlog:
                 is_bundle: false
                 type: annotation
-                dir: '%kernel.project_dir%/src/Entity'
-                prefix: 'EryseBlog\Entity'
+                dir: '%kernel.project_dir%/src'
+                prefix: 'EryseBlog\'
                 alias: EryseBlog

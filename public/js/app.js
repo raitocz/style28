@@ -1,6 +1,11 @@
 $(document).ready(function () {
-    var simplemde = new SimpleMDE({ element: $("#mde-wrapper")[0], forceSync: true });
-
+    var bsCodeMirror = CodeMirror.fromTextArea(document.getElementById("article_entity_content"), {
+        lineNumbers: true,
+        lineWrapping: true,
+        theme: "darcula",
+        mode : "xml",
+        htmlMode: true,
+    });
 });
 
 

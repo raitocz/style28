@@ -6,6 +6,11 @@
 
     {{ form_row(form.content) }}
 
+    {% if photos|length %}
+    <h3>Photos</h3>
+
+    {% endif %}
+
     {{ form_rest(form) }}
 
 <button class="btn btn-success float-left" type="submit">

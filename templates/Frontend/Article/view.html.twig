@@ -1,23 +1,39 @@
 {% extends '_layout/main.html.twig' %}
 
-{% block title %}{{ article.title }}{% endblock %}
+{% block title %}{{ dto.article.title }}{% endblock %}
 
 {% block body %}
 
-    <h1 class="mt-5">{{ article.title }}</h1>
+    <h1>{{ dto.article.title }}</h1>
 
     <p>
-        Published on {{ article.datePublished|date('d. M Y') }}
-        {% if article.dateEdited is not null and article.datePublished is same as(article.dateEdited) %}
-            <i>(last edited on {{ article.dateEdited|date('d. M Y') }})</i>
+        Published on {{ dto.article.datePublished|date('d. M Y') }}
+        {% if dto.article.dateEdited is not null and dto.article.datePublished is same as(dto.article.dateEdited) %}
+            <i>(last edited on {{ dto.article.dateEdited|date('d. M Y') }})</i>
         {% endif %}
-        by <strong>{{ article.author }}</strong>
+        by <strong>{{ dto.article.author }}</strong>
     </p>
-    <hr class="mb-5">
+    <hr>
 
-    {% apply markdown_to_html %}
-        {{ article.content }}
-    {% endapply %}
+    <div id="article-view">
+        {{ dto.article.content|raw }}
+    </div>
+    <hr/>
 
+    <div class="row">
+        <div class="col col-xs-12 col-lg-6 text-left">
+            {% if dto.previousArticle %}
+            Previous article:<br/>
+            <a href="{{ url('frontend_article_view', {"datePublished": dto.previousArticle.datePublished|date("Y-m-d"), "slug": dto.previousArticle.slug}) }}">{{ dto.previousArticle.title }}</a>
+            {% endif %}
+        </div>
+        <div class="col col-xs-12 col-lg-6 text-right">
+            {% if dto.nextArticle %}
+                Next article:<br/>
+                <a href="{{ url('frontend_article_view', {"datePublished": dto.nextArticle.datePublished|date("Y-m-d"), "slug": dto.nextArticle.slug}) }}">{{ dto.nextArticle.title }}</a>
+            {% endif %}
+        </div>
+
+    </div>
 
 {% endblock %}

@@ -24,10 +24,10 @@ RUN docker-php-ext-install \
     mbstring \
     pdo \
     pdo_mysql \
-    pdo_pgsql \
-    gd
+    pdo_pgsql
 
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
+  && docker-php-ext-install -j "$(nproc)" gd
 
 # Install other soft
 RUN apt-get -y install \
